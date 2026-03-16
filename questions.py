@@ -40,7 +40,7 @@ while attempts > 0:
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
     
-    letter = input("Ingresá una letra: ")
+    letter = input("Ingresá una letra: ").lower() # de esta manera si se ingresa mayuscula lo pasa a minuscula
     
     if (letter.isalpha()) and (len(letter) == 1): #compruebo si es una letra, y si es solo una
         if letter in guessed:
