@@ -1,16 +1,30 @@
 import random
-words = [ #lista de palabras
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
+lista1 = ["python","programa"]
+    
+lista2 = ["variable","funcion"]
+    
+lista3 = ["bucle","cadena"]
+    
+lista4 = ["entero","lista"]
 
-word = random.choice(words)
+categorias = {
+    "categoria1":lista1,
+    "categoria2":lista2,
+    "categoria3":lista3,
+    "categoria4":lista4
+}
+
+
+ok = True
+while ok:
+    seleccionar = input("seleccione una categoria del 1 al 4: ")
+    if (len(seleccionar) == 1) and (seleccionar.isdigit()) and (int(seleccionar) in range(1,5)): # chequeo si es un numero del 1 al 4
+        word = random.choice(categorias["categoria"+seleccionar])
+        ok=False
+    else:
+        print("Vuelva a intentarlo, ingrese bien la categoria")
+
+
     
 guessed = [] #adivina
     
