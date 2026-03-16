@@ -1,5 +1,5 @@
 import random
-words = [
+words = [ #lista de palabras
     "python",
     "programa",
     "variable",
@@ -12,9 +12,9 @@ words = [
 
 word = random.choice(words)
     
-guessed = []
+guessed = [] #adivina
     
-attempts = 6
+attempts = 6 #intentos 
     
 print("¡Bienvenido al Ahorcado!")
 print()
@@ -39,15 +39,18 @@ while attempts > 0:
     
     letter = input("Ingresá una letra: ")
     
-    if letter in guessed:
-        print("Ya usaste esa letra.")
-    elif letter in word:
-        guessed.append(letter)
-        print("¡Bien! Esa letra está en la palabra.")
+    if (letter.isalpha()) and (len(letter) == 1): #compruebo si es una letra, y si es solo una
+        if letter in guessed:
+            print("Ya usaste esa letra.")
+        elif letter in word:
+            guessed.append(letter)
+            print("¡Bien! Esa letra está en la palabra.")
+        else:
+            guessed.append(letter)
+            attempts -= 1
+            print("Esa letra no está en la palabra.")
     else:
-        guessed.append(letter)
-        attempts -= 1
-        print("Esa letra no está en la palabra.")
+        print("entrada no valida")
         
     print()
     
