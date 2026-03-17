@@ -14,11 +14,13 @@ categorias = {
     "categoria4":lista4
 }
 
+print("¡Bienvenido al Ahorcado!")
+print()
 
 ok = True
 while ok:
     seleccionar = input("seleccione una categoria del 1 al 4: ")
-    if (len(seleccionar) == 1) and (seleccionar.isdigit()) and (int(seleccionar) in range(1,5)): # chequeo si es un numero del 1 al 4
+    if (seleccionar == "1") or (seleccionar == "2") or (seleccionar == "3") or (seleccionar == "4"): # chequeo si es un numero del 1 al 4
         word = random.choice(categorias["categoria"+seleccionar])
         ok=False
     else:
@@ -29,9 +31,6 @@ while ok:
 guessed = [] #adivina
     
 attempts = 6 #intentos 
-    
-print("¡Bienvenido al Ahorcado!")
-print()
     
 puntaje = 6
 
