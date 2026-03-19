@@ -8,10 +8,10 @@ lista3 = ["bucle","cadena"]
 lista4 = ["entero","lista"]
 
 categorias = {
-    "categoria1":lista1,
-    "categoria2":lista2,
-    "categoria3":lista3,
-    "categoria4":lista4
+    "1":lista1,
+    "2":lista2,
+    "3":lista3,
+    "4":lista4
 }
 
 print("¡Bienvenido al Ahorcado!")
@@ -41,7 +41,7 @@ while seguir:
     while ok:
         seleccionar = input("seleccione una categoria del 1 al 4: ")
         if (seleccionar == "1") or (seleccionar == "2") or (seleccionar == "3") or (seleccionar == "4"): # chequeo si es un numero del 1 al 4
-            word = random.choice(categorias["categoria"+seleccionar])
+            word = random.choice(categorias[seleccionar])
             ok=False
         else:
             print("Vuelva a intentarlo, ingrese bien la categoria")
