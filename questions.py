@@ -34,7 +34,15 @@ def seguirJugando(): #funcion que permite volver a jugar
     return   ingresar == "s"
 
 
+def mezclarCategorias(categorias): #mezclo las categorias
+    mezcladas = {}
+    for i in categorias:
+        mezcladas[i] = random.sample(categorias[i],len(categorias[i]))
+    return mezcladas
 
+
+
+mezcladas = mezclarCategorias(categorias)
 seguir = seguirJugando()
 while seguir:
     ok = True
