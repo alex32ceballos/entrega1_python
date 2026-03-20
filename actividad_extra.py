@@ -4,12 +4,19 @@ tabla = { #agregue algunos equipos a la tabla
     "Boca":8
 }
 
-def eliminarEquipo(equipo):
+def eliminarEquipo(equipo): #funcion para eliminar equipo
     if (equipo in tabla):
         del tabla[equipo]
         print(f"el equipo {equipo} fue eliminado")
     else:
         print("el equipo ingresado no se encuentra en la tabla")
+        
+def agregarEquipo(equipo):
+    if (not equipo in tabla):
+        tabla[equipo]=0
+    else:
+        print('No se puede agregar el equipo porque ya se encuentra')
+        
 
 def menuOpciones():
     print("¡BIENVENIDO A LA TABLA DE POSICIONES!\nIngrese una de las siguientes opciones: \n")
