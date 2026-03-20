@@ -73,48 +73,51 @@ def esUnaLetra(letter, guessed, word, attempts, puntaje):
     else:
         print("entrada no valida")
     return attempts, puntaje
-    
-            
-#------------------------------------------------------------------------            
 
-mezcladas = mezclarCategorias(categorias)
-seguir = seguirJugando()
-while seguir:
-    word = elegirCategoria(mezcladas)
-    if (word is None):
-        print("No quedan mas palabras por elegir de ninguna categoria, el juego se acabo")
-        break
-    
-    guessed = [] #adivina
-    attempts = 6 #intentos 
-    puntaje = 6
 
-    while attempts > 0:
-        # Mostrar progreso: letras adivinadas y guiones para las quprogress = ""
-        progress = ""
-        for letter in word:
-            if letter in guessed:
-                progress += letter + " "
-            else:
-                progress += "_ "
-        print(progress)
-        
-        # Verificar si el jugador ya adivinó la palabra completa
-        if "_" not in progress:
-            print("¡Ganaste!")
-            puntaje = 6
+def juegoAhorcado():
+    mezcladas = mezclarCategorias(categorias)
+    seguir = seguirJugando()
+    while seguir:
+        word = elegirCategoria(mezcladas)
+        if (word is None):
+            print("No quedan mas palabras por elegir de ninguna categoria, el juego se acabo")
             break
         
-        print(f"Intentos restantes: {attempts}")
-        print(f"Letras usadas: {', '.join(guessed)}")
-        
-        letter = input("Ingresá una letra: ").lower() # de esta manera si se ingresa mayuscula lo pasa a minuscula
-        attempts, puntaje = esUnaLetra(letter, guessed, word, attempts, puntaje)
-        print()
-        
-    else:
-        print(f"¡Perdiste! La palabra era: {word}")
+        guessed = [] #adivina
+        attempts = 6 #intentos 
+        puntaje = 6
 
-    print("tu puntaje es de: ", puntaje)
+        while attempts > 0:
+            # Mostrar progreso: letras adivinadas y guiones para las quprogress = ""
+            progress = ""
+            for letter in word:
+                if letter in guessed:
+                    progress += letter + " "
+                else:
+                    progress += "_ "
+            print(progress)
+            
+            # Verificar si el jugador ya adivinó la palabra completa
+            if "_" not in progress:
+                print("¡Ganaste!")
+                puntaje = 6
+                break
+            
+            print(f"Intentos restantes: {attempts}")
+            print(f"Letras usadas: {', '.join(guessed)}")
+            
+            letter = input("Ingresá una letra: ").lower() # de esta manera si se ingresa mayuscula lo pasa a minuscula
+            attempts, puntaje = esUnaLetra(letter, guessed, word, attempts, puntaje)
+            print()
+            
+        else:
+            print(f"¡Perdiste! La palabra era: {word}")
 
-    seguir = seguirJugando()
+        print("tu puntaje es de: ", puntaje)
+        seguir = seguirJugando()
+            
+#------------------------------------------------------------------------            
+# PPAL
+
+juegoAhorcado()
