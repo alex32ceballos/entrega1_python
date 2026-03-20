@@ -56,6 +56,23 @@ def elegirCategoria(mezcladas):
     return word
             
             
+def esUnaLetra(letter, guessed, word, attempts, puntaje):
+    if (letter.isalpha()) and (len(letter) == 1): #compruebo si es una letra, y si es solo una
+        if letter in guessed:
+                print("Ya usaste esa letra.")
+        elif letter in word:
+            guessed.append(letter)
+            print("¡Bien! Esa letra está en la palabra.")
+        else:
+            guessed.append(letter)
+            attempts -= 1
+            puntaje -= 1
+            print("Esa letra no está en la palabra.")
+    else:
+        print("entrada no valida")
+    return attempts, puntaje
+    
+            
 #------------------------------------------------------------------------            
 
 mezcladas = mezclarCategorias(categorias)
@@ -90,19 +107,7 @@ while seguir:
         
         letter = input("Ingresá una letra: ").lower() # de esta manera si se ingresa mayuscula lo pasa a minuscula
         
-        if (letter.isalpha()) and (len(letter) == 1): #compruebo si es una letra, y si es solo una
-            if letter in guessed:
-                print("Ya usaste esa letra.")
-            elif letter in word:
-                guessed.append(letter)
-                print("¡Bien! Esa letra está en la palabra.")
-            else:
-                guessed.append(letter)
-                attempts -= 1
-                puntaje -= 1
-                print("Esa letra no está en la palabra.")
-        else:
-            print("entrada no valida")
+        attempts, puntaje = esUnaLetra(letter, guessed, word, attempts, puntaje)
             
         print()
         
