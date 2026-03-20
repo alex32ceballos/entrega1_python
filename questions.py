@@ -1,17 +1,14 @@
 import random
-lista1 = ["python","programa"]
+programacion = ["python","programa","variable","bucle","cadena","entero","lista"]
     
-lista2 = ["variable","funcion"]
+musica = ["rock","metal","pop","jazz"]
     
-lista3 = ["bucle","cadena"]
-    
-lista4 = ["entero","lista"]
+comida = ["arroz","fideos","carne","huevo","pescado"]
 
 categorias = {
-    "1":lista1,
-    "2":lista2,
-    "3":lista3,
-    "4":lista4
+    "programacion":programacion,
+    "musica":musica,
+    "comida":comida,
 }
 
 print("¡Bienvenido al Ahorcado!")
@@ -43,15 +40,18 @@ def mezclarCategorias(categorias): #mezclo las categorias
 
 def elegirCategoria(mezcladas):
     ok = True
+    print("categorias a elegir: ")
+    for c in mezcladas:
+        print("-", c)
     while ok:
-        seleccionar = input("seleccione una categoria del 1 al 4: ")
-        if seleccionar in mezcladas: # chequeo si es un numero del 1 al 4
+        seleccionar = input("seleccione una categoria: ").lower()
+        if seleccionar in mezcladas: # chequeo si se selecciono bien la categoria
             if (len(mezcladas[seleccionar]) > 0):
                 word = mezcladas[seleccionar].pop()
                 ok=False
             else:
                 print(f'la categoria {seleccionar} no tiene mas palabras')
-                if all(len(mezcladas[c]) == 0 for c in mezcladas): #verifico si cada lista del diccionario tiene longitud 0
+                if all(len(mezcladas[c]) == 0 for c in mezcladas): #verifico si hay palabras en todas las categorias
                     return None
         else:
             print("Vuelva a intentarlo, ingrese bien la categoria")
@@ -86,7 +86,7 @@ def juegoAhorcado():
         
         guessed = [] #adivina
         attempts = 6 #intentos 
-        puntaje = 6
+        puntaje = 0
 
         while attempts > 0:
             # Mostrar progreso: letras adivinadas y guiones para las quprogress = ""
@@ -101,7 +101,7 @@ def juegoAhorcado():
             # Verificar si el jugador ya adivinó la palabra completa
             if "_" not in progress:
                 print("¡Ganaste!")
-                puntaje = 6
+                puntaje += 6
                 break
             
             print(f"Intentos restantes: {attempts}")
