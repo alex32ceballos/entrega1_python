@@ -113,6 +113,7 @@ def juegoAhorcado():
             
         else:
             print(f"¡Perdiste! La palabra era: {word}")
+            puntaje = 0
 
         print("tu puntaje es de: ", puntaje)
         seguir = seguirJugando()
