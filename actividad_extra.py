@@ -1,7 +1,7 @@
 tabla = { #agregue algunos equipos a la tabla
-    "Platense":2,
-    "Estudiantes":6,
-    "Boca":8
+    "platense":2,
+    "estudiantes":6,
+    "boca":8
 }
 
 def eliminarEquipo(equipo): #funcion para eliminar equipo
@@ -15,6 +15,7 @@ def eliminarEquipo(equipo): #funcion para eliminar equipo
 def agregarEquipo(equipo): #agrego un equipo
     if (not equipo in tabla):
         tabla[equipo]=0
+        print("Equipo agregado correctamente")
     else:
         print('No se puede agregar el equipo porque ya se encuentra')
         
@@ -42,9 +43,9 @@ def marcadorEsNumero(marcador,local,visitante):
         
 
 def partidoActualizar(): #actualiza la tabla segun el partido
-    local = input("ingresar equipo local: ")
-    visitante = input("ingresar equipo visitante: ")
-    marcador = input("ingresar marcador: ")
+    local = input("ingresar equipo local: ").lower()
+    visitante = input("ingresar equipo visitante: ").lower()
+    marcador = input("ingresar marcador: ").replace(" ", "")
     if marcador.count("-") == 1:
         marcador = marcador.split("-")
         marcadorEsNumero(marcador,local,visitante)
@@ -87,14 +88,14 @@ def menuOpciones():
             continue #continuo con la siguiente iteracion del bucle
         match opcion:
             case 0:
-                equipo = input("ingresar equipo para agregar: ")
+                equipo = input("ingresar equipo para agregar: ").lower()
                 agregarEquipo(equipo)
             case 1:
                 partidoActualizar()
             case 2:
                 mostrarTabla()
             case 3:
-                equipo = input("ingresar equipo para eliminar: ")
+                equipo = input("ingresar equipo para eliminar: ").lower()
                 eliminarEquipo(equipo)
             case 4:
                 break
