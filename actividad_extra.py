@@ -68,7 +68,7 @@ def mostrarTabla():
     print("posicion   |      equipo      |    puntaje")
     contador = 1
     for subLista in tablaOrdenada:
-        print(f"{contador}          |      {subLista[1]}      |    {subLista[0]}")
+        print(f"{contador:<11}|{subLista[1]:<18}|{subLista[0]}")
         contador+=1
         
 
@@ -76,8 +76,29 @@ def menuOpciones():
     print("¡BIENVENIDO A LA TABLA DE POSICIONES!\nIngrese una de las siguientes opciones: \n")
     print("0. Agregar un equipo al torneo.")
     print("1. Registrar partido")
-    print("2. Mostrar tabla de posiciones(menor a mayor)")
+    print("2. Mostrar tabla de posiciones(mayor a menor)")
     print("3. Eliminar un equipo del torneo")
     print("4. Salir del programa")
-    
+    while True:
+        try:
+            opcion = int(input("ingresar opcion: "))
+        except ValueError: #si ingreso un caracter distinto a un numero natural manejo el error
+            print("ingrese un numero del 0 al 4")
+            continue #continuo con la siguiente iteracion del bucle
+        match opcion:
+            case 0:
+                equipo = input("ingresar equipo para agregar: ")
+                agregarEquipo(equipo)
+            case 1:
+                partidoActualizar()
+            case 2:
+                mostrarTabla()
+            case 3:
+                equipo = input("ingresar equipo para eliminar: ")
+                eliminarEquipo(equipo)
+            case 4:
+                break
+            case _:
+                print("ingrese bien la opcion, del 0 al 4")
+  
 menuOpciones()
