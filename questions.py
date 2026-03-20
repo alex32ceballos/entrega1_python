@@ -51,6 +51,8 @@ def elegirCategoria(mezcladas):
                 ok=False
             else:
                 print(f'la categoria {seleccionar} no tiene mas palabras')
+                if all(len(mezcladas[c]) == 0 for c in mezcladas): #verifico si cada lista del diccionario tiene longitud 0
+                    return None
         else:
             print("Vuelva a intentarlo, ingrese bien la categoria")
     return word
@@ -79,11 +81,12 @@ mezcladas = mezclarCategorias(categorias)
 seguir = seguirJugando()
 while seguir:
     word = elegirCategoria(mezcladas)
-
+    if (word is None):
+        print("No quedan mas palabras por elegir de ninguna categoria, el juego se acabo")
+        break
+    
     guessed = [] #adivina
-        
     attempts = 6 #intentos 
-        
     puntaje = 6
 
     while attempts > 0:
@@ -106,9 +109,7 @@ while seguir:
         print(f"Letras usadas: {', '.join(guessed)}")
         
         letter = input("Ingresá una letra: ").lower() # de esta manera si se ingresa mayuscula lo pasa a minuscula
-        
         attempts, puntaje = esUnaLetra(letter, guessed, word, attempts, puntaje)
-            
         print()
         
     else:
