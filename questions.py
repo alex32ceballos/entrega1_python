@@ -17,6 +17,7 @@ categorias = {
 print("¡Bienvenido al Ahorcado!")
 print()
 
+#-------------------------- funciones -------------------------------
 
 def seguirJugando(): #funcion que permite volver a jugar
     valido = False
@@ -40,20 +41,27 @@ def mezclarCategorias(categorias): #mezclo las categorias
         mezcladas[i] = random.sample(categorias[i],len(categorias[i]))
     return mezcladas
 
-
+def elegirCategoria(mezcladas):
+    ok = True
+    while ok:
+        seleccionar = input("seleccione una categoria del 1 al 4: ")
+        if seleccionar in mezcladas: # chequeo si es un numero del 1 al 4
+            if (len(mezcladas[seleccionar]) > 0):
+                word = mezcladas[seleccionar].pop()
+                ok=False
+            else:
+                print(f'la categoria {seleccionar} no tiene mas palabras')
+        else:
+            print("Vuelva a intentarlo, ingrese bien la categoria")
+    return word
+            
+            
+#------------------------------------------------------------------------            
 
 mezcladas = mezclarCategorias(categorias)
 seguir = seguirJugando()
 while seguir:
-    ok = True
-    while ok:
-        seleccionar = input("seleccione una categoria del 1 al 4: ")
-        if (seleccionar == "1") or (seleccionar == "2") or (seleccionar == "3") or (seleccionar == "4"): # chequeo si es un numero del 1 al 4
-            word = random.choice(categorias[seleccionar])
-            ok=False
-        else:
-            print("Vuelva a intentarlo, ingrese bien la categoria")
-
+    word = elegirCategoria(mezcladas)
 
     guessed = [] #adivina
         
